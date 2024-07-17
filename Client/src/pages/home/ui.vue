@@ -1,9 +1,5 @@
-<script lang="ts" setup>
-	const name = "test";
-</script>
+<script lang="ts" setup></script>
 
-<template>
-	<section></section>
-</template>
+<template></template>
 
 <style scoped></style>
