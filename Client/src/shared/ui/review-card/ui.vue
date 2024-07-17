@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-	<section></section>
+	<article></article>
 </template>
 
 <style scoped></style>

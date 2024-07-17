@@ -4,6 +4,6 @@ export const Routes = [
 	{
 		path: "/",
 		component: HomePage,
-		name: "Main"
+		name: "Home"
 	}
 ];
