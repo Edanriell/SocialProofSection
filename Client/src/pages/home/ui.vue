@@ -1,5 +1,9 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+	import { MainLayout } from "@widgets/layouts/main";
+</script>
 
-<template></template>
+<template>
+	<MainLayout></MainLayout>
+</template>
 
 <style scoped></style>
