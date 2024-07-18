@@ -34,8 +34,8 @@
 			</p>
 		</div>
 		<ul class="social-proof__review-card-list">
-			<li v-for="(reviewCard, index) in reviewCardsData" :key="index + '_' + reviewCard.text">
-				<ReviewCard :stars="reviewCard.rating" :text="reviewCard.text" />
+			<li v-for="(reviewCard, index) in reviewCardsData" :key="index + '-' + reviewCard.text">
+				<ReviewCard :description="reviewCard.text" :rating="reviewCard.rating" />
 			</li>
 		</ul>
 		<ul></ul>
