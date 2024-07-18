@@ -1,4 +1,21 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+	import { ReviewCard } from "@shared/ui/review-card";
+
+	const reviewCardsData = [
+		{
+			rating: 5,
+			text: "Rated 5 Stars in Reviews"
+		},
+		{
+			rating: 5,
+			text: "Rated 5 Stars in Report Guru"
+		},
+		{
+			rating: 5,
+			text: "Rated 5 Stars in BestTech"
+		}
+	];
+</script>
 
 <template>
 	<section class="social-proof">
@@ -16,14 +33,20 @@
 				satisfied customers are saying about our services.
 			</p>
 		</div>
-		<ul></ul>
+		<ul class="social-proof__review-card-list">
+			<li v-for="(reviewCard, index) in reviewCardsData" :key="index + '_' + reviewCard.text">
+				<ReviewCard :stars="reviewCard.rating" :text="reviewCard.text" />
+			</li>
+		</ul>
 		<ul></ul>
 	</section>
 </template>
 
 <style scoped>
 	.social-proof {
+		position: relative;
 		margin: 8.2rem 2.4rem 9.9rem 2.4rem;
+		z-index: 2;
 	}
 
 	.social-proof__text-content {
@@ -65,5 +88,15 @@
 
 	.social-proof__text--color--murasaki {
 		color: var(--murasaki);
+	}
+
+	.social-proof__review-card-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		row-gap: 1.6rem;
+		margin-bottom: 4.9rem;
 	}
 </style>
