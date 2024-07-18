@@ -1,19 +1,24 @@
 <script lang="ts" setup>
 	const props = defineProps<{
-		text: string;
-		stars: number;
+		description: string;
+		rating: number;
 	}>();
 
-	const maxStars = 5;
-	const activeStars = props.stars <= maxStars ? props.stars : 5;
-	const unActiveStars = props.stars <= maxStars ? maxStars - props.stars : 0;
+	const maxRating = 5;
+	const selectedStars = props.rating <= 0 ? 0 : props.rating <= maxRating ? props.rating : 5;
+	const unselectedStars =
+		props.rating <= 0 ? 5 : props.rating <= maxRating ? maxRating - props.rating : 0;
 </script>
 
 <template>
 	<div class="review-card">
 		<ol class="review-card__stars-list">
-			<li v-for="(star, index) in activeStars" :key="index" class="review-card__star">
-				<span class="visually-hidden">Star value {{ star }}</span>
+			<li
+				v-for="(starValue, index) in selectedStars"
+				:key="index + '-' + starValue"
+				class="review-card__star"
+			>
+				<span class="visually-hidden">Star value {{ starValue }}</span>
 				<svg
 					class="review-card__star"
 					fill="none"
@@ -28,8 +33,12 @@
 					/>
 				</svg>
 			</li>
-			<li v-for="(star, index) in unActiveStars" :key="index" class="review-card__star">
-				<span class="visually-hidden">Star value {{ star }}</span>
+			<li
+				v-for="(starValue, index) in unselectedStars"
+				:key="index + '-' + starValue"
+				class="review-card__star"
+			>
+				<span class="visually-hidden">Star value {{ starValue }}</span>
 				<svg
 					class="review-card__star"
 					fill="none"
@@ -45,7 +54,7 @@
 				</svg>
 			</li>
 		</ol>
-		<strong class="review-card__text">{{ props.text }}</strong>
+		<strong class="review-card__text">{{ props.description }}</strong>
 	</div>
 </template>
 
@@ -60,6 +69,15 @@
 		justify-content: center;
 		row-gap: 1.523rem;
 		padding: 1.6rem 0 1.5rem 0;
+
+		@media (width >= 1440px) {
+			flex-direction: row;
+			align-content: flex-start;
+			justify-content: flex-start;
+			max-width: 44.5rem;
+			column-gap: 3.245rem;
+			padding: 2rem 3.2rem 2rem 3.2rem;
+		}
 	}
 
 	.review-card__text {
