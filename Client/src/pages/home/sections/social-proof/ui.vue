@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+	import { UserReviewCard } from "@entities/users/ui/user-review-card";
 	import { ReviewCard } from "@shared/ui/review-card";
 
 	const reviewCardsData = [
@@ -13,6 +14,30 @@
 		{
 			rating: 5,
 			text: "Rated 5 Stars in BestTech"
+		}
+	];
+
+	const userReviewsCardsData = [
+		{
+			fullName: "Colton Smith",
+			userType: "Verified Buyer",
+			userImageUrl: "images/users/colton-smith-image.jpg",
+			reviewText:
+				"We needed the same printed design as the one we had ordered a week prior. Not only did they find the original order, but we also received it in time. Excellent!"
+		},
+		{
+			fullName: "Irene Roberts",
+			userType: "Verified Buyer",
+			userImageUrl: "images/users/irene-roberts-image.jpg",
+			reviewText:
+				"Customer service is always excellent and very quick turn around. Completely delighted with the simplicity of the purchase and the speed of delivery."
+		},
+		{
+			fullName: "Anne Wallace",
+			userType: "Verified Buyer",
+			userImageUrl: "images/users/anne-wallace-image.jpg",
+			reviewText:
+				"Put an order with this company and can only praise them for the very high standard. Will definitely use them again and recommend them to everyone!"
 		}
 	];
 </script>
@@ -38,14 +63,27 @@
 				<ReviewCard :description="reviewCard.text" :rating="reviewCard.rating" />
 			</li>
 		</ul>
-		<ul></ul>
+		<ul class="social-proof__user-reviews-list">
+			<li
+				v-for="(userReview, index) in userReviewsCardsData"
+				:key="index + '-' + userReview.fullName"
+			>
+				<UserReviewCard
+					:fullName="userReview.fullName"
+					:reviewText="userReview.reviewText"
+					:userImageUrl="userReview.userImageUrl"
+					:userType="userReview.userType"
+				/>
+			</li>
+		</ul>
 	</section>
 </template>
 
 <style scoped>
 	.social-proof {
 		position: relative;
-		margin: 8.2rem 2.4rem 9.9rem 2.4rem;
+		margin: 0 2.4rem 0 2.4rem;
+		padding: 8.2rem 0 9.9rem 0;
 		z-index: 2;
 	}
 
@@ -93,10 +131,18 @@
 	.social-proof__review-card-list {
 		list-style: none;
 		padding: 0;
+		display: flex;
+		flex-direction: column;
+		row-gap: 1.6rem;
+		margin: 0 0 4.9rem 0;
+	}
+
+	.social-proof__user-reviews-list {
+		list-style: none;
+		padding: 0;
 		margin: 0;
 		display: flex;
 		flex-direction: column;
 		row-gap: 1.6rem;
-		margin-bottom: 4.9rem;
 	}
 </style>
