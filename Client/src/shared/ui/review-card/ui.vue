@@ -85,6 +85,7 @@
 		font-weight: 700;
 		font-size: 1.7rem;
 		color: var(--murasaki);
+		line-height: 100%;
 	}
 
 	.review-card__stars-list {
