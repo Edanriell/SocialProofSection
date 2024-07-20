@@ -74,6 +74,7 @@
 			flex-direction: row;
 			align-content: flex-start;
 			justify-content: flex-start;
+			min-width: 44.5rem;
 			max-width: 44.5rem;
 			column-gap: 3.245rem;
 			padding: 2rem 3.2rem 2rem 3.2rem;

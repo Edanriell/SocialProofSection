@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-	import { onBeforeUnmount, onMounted, ref } from "vue";
+import {onBeforeUnmount, onMounted, ref} from "vue";
 
-	import { UserReviewCard } from "@entities/users/ui/user-review-card";
-	import { ReviewCard } from "@shared/ui/review-card";
+import {UserReviewCard} from "@entities/users/ui/user-review-card";
+import {ReviewCard} from "@shared/ui/review-card";
 
-	const screenWidth = ref(window.innerWidth);
+const screenWidth = ref(window.innerWidth);
 
 	const updateScreenWidth = () => {
 		screenWidth.value = window.innerWidth;
@@ -54,7 +54,7 @@
 			userImageUrl: "images/users/anne-wallace-image.jpg",
 			reviewText:
 				"Put an order with this company and can only praise them for the very high standard. Will definitely use them again and recommend them to everyone!"
-		}
+		},
 	];
 </script>
 
@@ -107,11 +107,16 @@
 		padding: 8.2rem 0 9.9rem 0;
 		z-index: 2;
 
+		@media (width >= 768px) {
+			margin: 0 16.5rem 0 16.5rem;
+			padding: 11.8rem 0 10rem 0;
+		}
+
 		@media (width >= 1440px) {
 			margin: 0 16.5rem 0 16.5rem;
 			padding: 11.8rem 0 10rem 0;
 			display: grid;
-			grid-template-columns: 44.5rem auto;
+			grid-template-columns: 44.5rem minmax(54rem, auto);
 			grid-template-rows: repeat(2, auto);
 			gap: 7.1rem 12.5rem;
 			align-items: start;
@@ -209,11 +214,14 @@
 			justify-content: center;
 			align-items: flex-start;
 			gap: 3rem;
-			flex-wrap: wrap;
 
 			> li {
 				flex: 0 0 35rem;
 			}
+		}
+
+		@media (width >= 1460px) {
+			flex-wrap: wrap;
 		}
 	}
 </style>
